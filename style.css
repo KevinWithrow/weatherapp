@@ -6,9 +6,13 @@
     margin-top: 1rem;
   } */
   .card{
-      width: 50%;
-      margin-left: auto;
-      margin-right: auto;
+      min-width: 100px;
+      margin-left: 10%;
+      margin-right: 10%;
+      min-height: 100px;
+  }
+  #apiContent{
+      display:none;
   }
   .body{
     font-family: 'Roboto Mono', monospace;
@@ -26,7 +30,13 @@
 
   .currentTemp{
     font-family: 'Roboto Mono', monospace;
-    font-size: 5rem;
+   font-size: 3.5rem;
+    display: inline-block;
+  }
+  #weatherIcon{
+    display: inline-block;
+    float: right;
+    padding-bottom: 2rem;
   }
   p{
       margin: 0%;
@@ -67,3 +77,6 @@ label {
     padding-top: 2rem;
 }
 
+#header p{
+    justify-content: center;
+}

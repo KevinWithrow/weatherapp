@@ -9,26 +9,35 @@
   </head>
   <body>
     <div class="card rounded my-3 shadow-lg">
-      <div class="city text-center">City:</div>
+      <div id="header">
+        <p>What the Hell is happening outside?</p>
+      </div>
+   
+      
       <!-- <img src="img/FBC-trans.png" class="topImg" alt="..."> -->
       <div class="contentBody">
-        
-        <div>
-          <p>Current Temp:</p>
-          <span class="currentTemp text-center"></span>
+        <div id="apiContent">
+          <div class="city text-center"></div>
+          <div>
+            <p>Current Temp:</p>
+            <span class="currentTemp text-center"></span>
+            <img id="weatherIcon"  src="img/clear.jpg" alt="..."> 
+          </div>
+          <div>
+            <p>High:</p>
+            <span class="maxTemp"></span>
+          </div>
+          <div>
+            <p>Low:</p>
+            <span class="minTemp"></span>
+          </div>
         </div>
-        <div>
-          <p>High:</p>
-          <span class="maxTemp"></span>
-        </div>
-        <div>
-          <p>Low:</p>
-          <span class="minTemp"></span>
-        </div>
+
+      
 
         <div class="input">
           <input type = "text" class = "inputValue form-control text-muted form-rounded" placeholder="enter city name">
-          <input class="button" type = "submit" value = "submit" >
+          <input onclick="myFunction()" class="button" type = "submit" value = "submit" >
 
           
         </div>
