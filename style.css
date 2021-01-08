@@ -1,50 +1,25 @@
-/* .centered {
-    width: 50%;
-    background-color: rgb(174, 179, 179);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-  } */
-  .card{
-      min-width: 100px;
-      margin-left: 10%;
-      margin-right: 10%;
-      min-height: 100px;
-  }
-  #apiContent{
-      display:none;
-  }
-  .body{
-    font-family: 'Roboto Mono', monospace;
-  }
-  /* .topImg{
-      border-radius: 50%;
-      height: 15rem;
-      width: 10rem;  
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 1rem;
-      padding-top: 3.5rem;;
-  } */
 
-  .currentTemp{
+  body{
+    font-family: 'Roboto Mono', monospace;
+    background-color: rgb(188, 200, 241);
+  }
+
+  /* .currentTemp{
     font-family: 'Roboto Mono', monospace;
    font-size: 3.5rem;
     display: inline-block;
-  }
-  #weatherIcon{
-    display: inline-block;
-    float: right;
-    padding-bottom: 2rem;
-  }
-  p{
+  } */
+   /* .weather-icon{
+    width:100px;
+    height:100px;
+  }  */
+  /* p{
       margin: 0%;
       padding: 0%;
       font-family: 'Roboto Mono', monospace;
       font-size: 1rem;
-  }
-  
+  } */
+/*   
   .maxTemp{
     font-family: 'Roboto Mono', monospace;
     font-size: 2rem;
@@ -53,13 +28,13 @@
   .minTemp{
     font-family: 'Roboto Mono', monospace;
     font-size: 2rem;
-  }
-  .city{
+  } */
+  /* .city{
     font-family: 'Roboto Mono', monospace;
     font-size: 2rem;
-  }
+  } */
 
-  .label {
+  /* .label {
     display: block;
     font: 1rem 'Fira Sans', sans-serif;
  }
@@ -72,11 +47,11 @@ label {
 .contentBody{
     justify-content: center;
     padding: 2rem;
-}
-.searchBar{
+} */
+/* .searchBar{
     padding-top: 2rem;
 }
 
 #header p{
     justify-content: center;
-}
+} */

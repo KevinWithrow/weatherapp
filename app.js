@@ -1,54 +1,60 @@
-var button = document.querySelector('.button');
-var inputValue = document.querySelector('.inputValue');
-var city = document.querySelector('.city');
-var currentTemp = document.querySelector('.currentTemp');
-var minTemp = document.querySelector('.minTemp');
-var maxTemp = document.querySelector('.maxTemp');
-var weatherIcon = document.querySelector('.weatherIcon');
-var iconFile;
 
-// fetch('api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}')
-function myFunction() {
-    document.getElementById("apiContent").style.display = "block";
+
+const api = {
+    key: "ee7b6d1c9395bb3f062e8c21709d349e",
+    base: "https://api.openweathermap.org/data/2.5/"
   }
+  
+  //We now select our search-box class from our index.html file.
+  const searchBox = document.querySelector('.search-box');
+  
+  //We need this box to also read events or actions on the page.
+  //We're going to add an event listener to this box, and have it
+  //"listen" for keypresses. On keypress, we will run our readUserInput function.
+  //Note: addEventListener is an inbuilt function in Javascript while
+  //readUserInput is user defined.
+  searchBox.addEventListener('keypress', readUserInput);
 
+  //We define a function that takes in an event parameter.
+  function readUserInput(event) {
+    //If the enter key is pressed...
+    if (event.keyCode == 13) {
+      //run another function, that takes another parameter!
+      //this parameter is based on the value or input within the searchBox.
+      getAPIResults(searchBox.value);
+    }
+  }
+  
+  //ANOTHER FUNCTION
+  //We want to wrap our searchbox value into something the API can be sent.
+  
+  function getAPIResults (userInput) {
+    //We fetch our api using the Object we defined above.
+    //Fetch can be a bit tricky, and we're also using promises by utilizing .then.
 
-button.addEventListener('click',function(){
-    // fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&ee7b6d1c9395bb3f062e8c21709d349e')
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&units=imperial&appid=ee7b6d1c9395bb3f062e8c21709d349e')
-.then(response => response.json())
-.then(data => {
-    var cityValue = data['name'];
-    var currentTempValue = data['main']['temp'];
-    var minValue = data['main']['temp_min'];
-    var maxValue = data['main']['temp_max'];
-    var weatherIcon = data['weather']['id'];
+    fetch(`${api.base}weather?q=${userInput}&units=imperial&APPID=${api.key}`)
+      .then(weatherData => {
+        return weatherData.json();
+      }).then(updateHTMLwithData);
+  }
+  
+  function updateHTMLwithData (weather) {
+    
+    //Lets select our location-id and create a variable
+    let city = document.querySelector('#location-id');
+    //Now we can tell whatever data boxed into our city variable to take in
+    //values from weather.name, and weather.sys.country. This is referencing
+    //the data recieved back in our JSON object.
+    city.innerText = `${weather.name}, ${weather.sys.country}`;
+  
+  
+    //Same thing with temperature!
+    let temp = document.querySelector('#temp-ID');
+    temp.innerText  = weather.main.temp; 
+  
+  
+    //Now onto the icon!
+    let icon = document.querySelector('.weather-icon');
 
-    city.innerHTML = cityValue;
-    currentTemp.innerHTML = currentTempValue;
-    minTemp.innerHTML = minValue;
-    maxTemp.innerHTML = maxValue;
-
-    if(id < 250){
-        weatherIcon.src = '/img/thunderstorm.jpg'
-    }
-    else if (id < 350){
-        weatherIcon.src = '/img/lightRain.jpg'
-    }
-    else if (id < 550){
-        weatherIcon.src = '/img/rain.jpg'
-    }
-    else if (id < 650){
-        weatherIcon.src = '/img/snow.jpg'
-    }
-    else if (id === 800){
-        weatherIcon.src = '/img/clear.jpg'
-    }
-    else if (id > 800){
-        weatherIcon.src = '/img/clouds.jpg'
-    }
-
-})
-.catch(err => alert("Wrong city name!"))
-});
-
+    icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/>`;
+  }
